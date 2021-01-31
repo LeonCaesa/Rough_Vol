@@ -1,7 +1,7 @@
 
 function H_result = H3(t, s, d, kappa, delta)
     if t - s + delta < (1-d) / kappa
-        nominator = (t-s+delta)^d - (t - s)^d;
+        nominator = (t-s+delta).^d - (t - s).^d;
         denominator = delta * gamma(d+1);
          H_result =nominator/denominator;
     

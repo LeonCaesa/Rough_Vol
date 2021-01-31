@@ -4,8 +4,8 @@ function result = phi_I_square(l, J, kappa, var_sigma, a, c, b, d, t, delta, alp
     constant = integral(fun, -Inf, Inf, 'AbsTol', 1e-2);
  
     first = 1i* l * J;
-    inte_loginside_real = @(s) real(log(phi_x(l * H1(t, s, d, kappa, delta), a, c, b)));
-    inte_loginside_complex = @(s) imag(log(phi_x(l * H1(t, s, d, kappa, delta), a, c, b)));
+    inte_loginside_real = @(s) real(log(phi_x(l * H3(t, s, d, kappa, delta), a, c, b)));
+    inte_loginside_complex = @(s) imag(log(phi_x(l * H3(t, s, d, kappa, delta), a, c, b)));
     
     
     second_real = integral(inte_loginside_real, 0, t, 'AbsTol', 1e-2);
