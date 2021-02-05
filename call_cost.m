@@ -10,18 +10,18 @@ b = x(6);
 
 data_test = load('put_data.mat');
 alpha = data_test.alpha;
-    d = data_test.d;
-    prices= data_test.data.Last;
-    T = data_test.data.T;
-    K = data_test.data.Strike;
-    delta = data_test.delta;
+d = data_test.d;
+prices= data_test.data.Last;
+T = data_test.data.T;
+K = data_test.data.Strike;
+delta = data_test.delta;
 
 result = 0;
 for i= 1:length(K)
    disp(i)
    true = prices(i);
    fit = put_price(K(i), J, kappa, var_sigma, a, c, b, d, T(i), delta, alpha);
-   result = result + (true-fit)^2;
+   result = result + ((true-fit)/true)^2;
    %result(:,i) = (true-fit)^2;
 end
 %result = sum(result./length(K));
