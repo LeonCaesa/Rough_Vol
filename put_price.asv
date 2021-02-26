@@ -4,7 +4,7 @@ function result = put_price(K, vix0, kappa, var_sigma, a, c, b, d, T, delta, alp
     % put
     second_multy = @(l) K * exp(-1i * K^2 *l) + (sqrt(pi)/2 - igamma(3/2, 1i* K^2 * l))/ sqrt(1i * l);
     %inte_l = @(l) real(second_multy(l) .* phi_I_square(l, J, kappa, var_sigma, a, c, b, d, T, delta, alpha)/(1i * l));
-    inte_l = @(l) real(second_multy(l) .* phi_I_square(l, vix0, kappa, var_sigma, a, c, b, d, T, delta, alpha)/(1i * l));
+    inte_l = @(l) real(second_multy(l) .* phi_I_square(l, J, kappa, var_sigma, a, c, b, d, T, delta, alpha)/(1i * l));
     result = K/2 - 1/pi * integral(inte_l, 0, inf, 'ArrayValued',true, 'AbsTol', 1e-1);
     
 %     temp_intel = 1;

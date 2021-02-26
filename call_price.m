@@ -1,9 +1,11 @@
 
-function result = call_price(K, J, kappa, var_sigma, a, c, b, d, T, delta, alpha)
+%function result = call_price(K, J, kappa, var_sigma, a, c, b, d, T, delta, alpha)
+function result = call_price(K, vix0, kappa, var_sigma, a, c, b, d, T, delta, alpha)
     % call
     first = @(l)  sqrt(pi./(2 *l.^3));
     second_multy = @(l) K * exp(-1i * K^2 *l) + (1i * sqrt(pi) /2 - igamma(3/2, 1i* K^2 * l))/ sqrt(1i * l);
-    inte_l = @(l) real(first(l) -  second_multy(l).* phi_I_square(l, J, kappa, var_sigma, a, c, b, d, T, delta, alpha)./(1i .* l));  
+    %inte_l = @(l) real(first(l) -  second_multy(l).* phi_I_square(l, J, kappa, var_sigma, a, c, b, d, T, delta, alpha)./(1i .* l));  
+    inte_l = @(l) real(first(l) -  second_multy(l).* phi_I_square(l, vix0, kappa, var_sigma, a, c, b, d, T, delta, alpha)./(1i .* l));  
     result = 1/pi * integral(inte_l, 0, inf, 'ArrayValued',true, 'AbsTol', 1e-2) - K/2;
     
 %     temp_intel = 1;
